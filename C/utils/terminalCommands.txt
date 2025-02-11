@@ -1,0 +1,7 @@
+cd - change directory / if u r lost u can use just "cd " to go to root directory .
+cp - copy - cp hello.c backup.c
+ls - list 
+mkdir - make a directory 
+mv - move / rename a file - mv hello.c ( directory or new name ) / move to parent folder mv name .. 
+rm - remove 
+rmdir - remove directory 

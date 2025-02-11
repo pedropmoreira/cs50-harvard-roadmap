@@ -1,0 +1,5 @@
+Manual C : 
+https://manual.cs50.io/
+
+cs50Ai : 
+https://cs50.ai/

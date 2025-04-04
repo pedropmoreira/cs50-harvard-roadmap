@@ -1,0 +1,40 @@
+table exemplo:
+C
+PYTHON
+PYTHON
+SQL
+PYTHON
+SQL
+
+GROUP BY: 
+    SELECT language, COUNT(*) FROM favorites GROUP BY language;
+
+entao o group by vai combinar todos os valores iguais, tipo eu quero o valor da contagem mas que esse valor seja igual aos valores especifico de language. 
+logo juntar combinar todos os elementos semelhantes ( C , PYTHON E SQL ) . 
+
+language  COUNT
+C         number of C
+python    number of python
+SQL       number of sql  
+
+Posso usar tambem o ORDER BY COUNT(*) , logo sera ordenado pelo valor de COUNT . 
+ASC - MENOR PRO MAIOR
+DESC - MAIOR PRO MENOR
+
+INSERT :
+
+INSERT INTO favorites (language, problem) VALUES ('SQL','Fiftyville');
+vai criar os atributos SQL E Fiftyville ( em suas colunas respectivas ) ;
+e NULL pra primeira tabela que nao foi passada.
+
+DELETE FROM table WHERE condition;
+
+DELETE FROM favorites WHERE Timestamp IS NULL; 
+assim vai ser deletado apeanas as linhas que tem o valor de TIMETAMP como NULL ;
+
+UPTADE table SET column = value WHERE condition;
+
+UPDATE favorites SET language = 'SQL', problem = 'Fiftyville';
+vai settar de todos a lingaugem de SQL como a favorita de o problem como o Fiftyville.
+
+

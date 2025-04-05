@@ -37,4 +37,9 @@ UPTADE table SET column = value WHERE condition;
 UPDATE favorites SET language = 'SQL', problem = 'Fiftyville';
 vai settar de todos a lingaugem de SQL como a favorita de o problem como o Fiftyville.
 
+///////////// 
+
+SELECT show_id FROM ratings WHERE rating >= 6.0 LIMIT 10; ISSO VAI ME RETORNAR OS 10 PRIMEIROS SHOWS NAO ORDENADOS COM NOTA MIAOR Q 6 
+
+SELECT * FROM show WHERE id IN (SELECT show_id FROM ratings WHERE rating >= 6.0 ) LIMIT 10 ;  parenteses vai executar primeiro 
 

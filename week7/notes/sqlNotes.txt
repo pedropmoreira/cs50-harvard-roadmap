@@ -43,3 +43,9 @@ SELECT show_id FROM ratings WHERE rating >= 6.0 LIMIT 10; ISSO VAI ME RETORNAR O
 
 SELECT * FROM show WHERE id IN (SELECT show_id FROM ratings WHERE rating >= 6.0 ) LIMIT 10 ;  parenteses vai executar primeiro 
 
+USANDO JOIN PARA JUNTAR DUAS TABELAS 
+
+SELECT * FROM shows JOIN ratings ON shows.id = ratings.show_id WHERE rating >=6 LIMIT 10;
+quando uso o ON estou mostrando como que essas duas tables devem ser alinhadas ( nesse caso passei ambos os ids )
+
+RELAÇÃO VARIOS PRA VARIOS

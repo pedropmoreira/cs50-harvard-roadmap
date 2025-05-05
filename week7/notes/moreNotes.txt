@@ -1,0 +1,121 @@
+sqlite> .mode csv
+sqlite> .import favorites.csv favorites
+sqlite> .quit
+week7/ $ ls
+favorites.csv  favorites.db
+week7/ $ sqlite3 favorites.db
+
+SELECT:
+
+SELECT * FROM favorites; ( shwo all colmuns from favorites db )
+
+SELECT langauge FROM favorites; ( show just de language column)
+
+COUNT :
+
+SELECT COUNT(*) FROM favorites; - vai retornar o numero de linhas que tem a table favorites
+
+DISTINCT :
+
+SELECT DISTINCT language FROM favorites; - vai mostrar todos conteudos diferetnes da columna language ( no caso python , c , scratch )
+    
+WHERE : 
+
+SELECT COUNT (*) FROM favorites WHERE language = 'C'; - vai contar quantas pessoas colocaram C na coluna language 
+
+AND: - podemos usar o operador AND para trabalhar com problemas logicos booleanos 
+
+() - podemos usar parentes tambem para continuar trabalhando com problemas logicos booleanos 
+
+SELECT COUNT(*) FROM favorites WHERE language = 'C' problem LIKE 'Hello, %' - podemos usar o like , como um coringa (por exemplo vai procurar na coluna todos problemas 
+que começam com hello) além disso , é necessário usar o "%" como complemento ( visto que esse vai completar o resto do que voce procura )
+
+
+
+////////////GROUP BY : 
+SELECT language, COUNT(*) FROM favorites GROUP BY language ;
+
+exmplo abaixo 
+antiga :
+language 
+C  
+Python 
+Python 
+Python
+SQL 
+SQL
+
+(basicamente vai agrupar as coisas semelhantes na coluna, por exemplo agrupando por linguagem  - )
+VAI AGRUPOAR COM ALGUM PROPOSITO 
+
+Nova : 
+language COUNT
+C 1 
+PYTHON 3 
+SQL 2
+
+//////////////////ORDER BY 
+SELECT language, COUNT(*) FROM favorites GROUP BY language ORDER BY COUNT(*); vai ordernar do menor pro maior 
+
+SELECT language, COUNT(*) FROM favorites GROUP BY language ORDER BY COUNT(*) ASC ; vai ordernar do MENOR PRO MAIOR 
+
+SELECT language, COUNT(*) FROM favorites GROUP BY language ORDER BY COUNT(*) DESC ; vai ordernar do menor pro maior 
+
+////////renomear : 
+
+SELECT language, COUNT(*) AS n FROM favorites GROUP BY language ORDER BY n DESC ; ( renomeou a coluna COUNT  pra N )
+
+///////LIMIT - usa pra limitar os resultados 
+
+SELECT language, COUNT(*) AS n FROM favorites GROUP BY language ORDER BY n DESC LIMIT 1  ; ( vai pegar o mais popular ja que vai retornar so o primeiro vallor  QUE SERIA EXIBIDO ) 
+
+////////// INSERT 
+
+INSERT INTO table (column, ... ) VALUES( value,...)
+
+//////NULL - ausencia de um valor 
+
+////////// DELETE FROM table WHERE conditon ; - vai deletar da tabela algo que se encaixa na condição que o WHERE impoe .
+
+//////UPDATE
+
+UPDATE table SET column  = value WHERE condition; VAI ATUALIZAR na coluna algo que se encaixa na condição que o WHERE impoe ;
+
+////// SCHEMAS 
+
+CREATE TABLE shows (
+    id INTEGER  
+    title TEXT NOT NULL
+    year NUMERIC
+    episodes INTEGER
+    PRIMARY KEY (id)
+)
+
+CREATE TABLE ratings(
+    show_id INTEGER NOT NULL
+    rating REAL NOT NULL
+    votes INTEGER NOT NULL 
+    FOREIGN KEY ( show_id ) REFERENCES shows(id)
+    )
+
+ /////// exemplos - basicamente uma query dentro de outra query 
+
+ SELECT show_id FROM ratings WHERE rating >= 6 LIMIT 10 ; Vai pegar apenas os ids dos 10 primeiros que seriam mostrados que possuem nota >= 6 
+
+SELECT * FROM shows WHERE id IN ( SELECT show_id FROM ratings WHERE rating >= 6 LIMIT 10 ;) vai me retornar a table shows que batem com o ID selecionado 
+
+//////// JOIN ( basicametne vamos trabalhar com PK e FK )
+
+SELECT * FROM shows JOIN ratings ON shows.id = ratings.show_id WHERE rating >= 6.0 limit 10 ; 
+no caso acima - as tables shows e rating vao se juntar , usando a chave  que elas tem em comum ( no caso da shows sua PK e na ratings sua FK )
+
+pegando apenas duas colunas que me importam exemoplo :
+
+SELECT tilte, genre  FROM shows JOIN genres ON shows.id = genres.show_id WHERE id = 63881; 
+
+title genre
+the office  commedy
+the office drama ...
+
+INDEXES : 
+
